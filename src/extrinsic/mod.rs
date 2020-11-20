@@ -46,8 +46,8 @@ macro_rules! compose_call {
             let module = $node_metadata.module_with_calls($module).unwrap().to_owned();
 
             let call_index = module.calls.get($call_name).unwrap();
-            println!("call_index = {:?}", call_index);
-            println!("module = {:?}", module);
+            // println!("call_index = {:?}", call_index);
+            // println!("module = {:?}", module);
 
             ([module.index, *call_index as u8] $(, ($args)) *)
         }

@@ -37,7 +37,7 @@ fn main() {
     let xt = api.nft_create_collection(nft_name, nft_description, token_prefix, mode);
 
     println!(
-        "Sending an extrinsic from Alice (Key = {}),\n\n",
+        "Sending an nft_create_collection extrinsic from Alice (Key = {}),\n\n",
         from.public(),
     );
     println!("[+] Composed extrinsic: {:?}\n", xt);
@@ -45,6 +45,26 @@ fn main() {
     // send and watch extrinsic until finalized
     let tx_hash = api
         .send_extrinsic(xt.hex_encode(), XtStatus::InBlock)
+        .unwrap();
+    println!("[+] Transaction got included. Hash: {:?}\n", tx_hash);
+
+
+    // generate extrinsic
+    let collection_id = 1u64;
+    let item_properties = vec![22u8, 33u8, 44u8];
+    let to = AccountKeyring::Bob.to_account_id();
+
+    let item_xt = api.nft_create_item(collection_id, item_properties, to);
+
+    println!(
+        "Sending an nft_create_item extrinsic from Alice (Key = {}),\n\n",
+        from.public(),
+    );
+    println!("[+] Composed extrinsic: {:?}\n", item_xt);
+
+    // send and watch extrinsic until finalized
+    let tx_hash = api
+        .send_extrinsic(item_xt.hex_encode(), XtStatus::InBlock)
         .unwrap();
     println!("[+] Transaction got included. Hash: {:?}\n", tx_hash);
 

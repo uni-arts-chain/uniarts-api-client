@@ -14,9 +14,6 @@
    limitations under the License.
 
 */
-
-use codec::Compact;
-
 use super::xt_primitives::*;
 #[cfg(feature = "std")]
 use crate::{compose_extrinsic, Api};
@@ -38,7 +35,16 @@ pub type NftCreateCollectionFn = (
     Vec<u8>,
     nft::CollectionMode,
 );
+
+pub type NftCreateItemFn = (
+    CallIndex,
+    u64,
+    Vec<u8>,
+    GenericAddress,
+);
+
 pub type NftCreateCollectionXt = UncheckedExtrinsicV4<NftCreateCollectionFn>;
+pub type NftCreateItemXt = UncheckedExtrinsicV4<NftCreateItemFn>;
 
 #[cfg(feature = "std")]
 impl<P> Api<P>
@@ -55,6 +61,17 @@ impl<P> Api<P>
             collection_description,
             token_prefix,
             mode
+        )
+    }
+
+    pub fn nft_create_item(&self, collection_id: u64, properties: Vec<u8>, owner: GenericAddress) -> NftCreateItemXt {
+        compose_extrinsic!(
+            self,
+            NFT_MODULE,
+            NFT_CREATE_ITEM,
+            collection_id,
+            properties,
+            owner
         )
     }
 }
