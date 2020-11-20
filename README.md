@@ -62,6 +62,7 @@ The following examples can be found in the [examples](/src/examples) folder:
 * [example_get_storage](/src/examples/example_get_storage.rs): Read storage values.
 * [example_print_metadata](/src/examples/example_print_metadata.rs): Print the metadata of the node in a readable way.
 * [example_transfer](/src/examples/example_transfer.rs): Transfer tokens by using a wrapper of compose_extrinsic
+* [example_nft](/src/examples/example_nft.rs): Nft Transfer
 
 ### ink! contract
 
