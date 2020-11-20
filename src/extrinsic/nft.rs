@@ -30,8 +30,6 @@ pub const NFT_CREATE_ITEM: &str = "create_item";
 
 pub type CallIndex = [u8; 2];
 pub type Balance = u128;
-pub type NextId = u64;
-pub type ModeId = u8;
 
 pub type NftCreateCollectionFn = (
     CallIndex,
