@@ -46,6 +46,12 @@ version = '2.0.0'
 package = "pallet-balances"
 default-features=false
 
+[dependencies.nft]
+git = 'https://github.com/uni-arts-chain/uni-arts-network'
+version = '2.0.0'
+package = "pallet-nft"
+default-features=false
+
 [dependencies.system]
 version = '2.0.0'
 package = "frame-system"
@@ -100,6 +106,7 @@ std = [
 	"metadata/std",
 	"sp-version/std",
 	"balances/std",
+	"nft/std",
 	"system/std",
     "sp-runtime/std",
 	"support/std",
@@ -155,6 +162,10 @@ path = "src/examples/example_benchmark_bulk_xt.rs"
 [[example]]
 name = "example_sudo"
 path = "src/examples/example_sudo.rs"
+
+[[example]]
+name = "example_nft"
+path = "src/examples/example_nft.rs"
 
 # DEPRECATED. might work but too much work to maintain, sorry
 
